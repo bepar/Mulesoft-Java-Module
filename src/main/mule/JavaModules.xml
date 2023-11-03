@@ -10,7 +10,7 @@ http://www.mulesoft.org/schema/mule/java http://www.mulesoft.org/schema/mule/jav
 	</http:listener-config>
 	<flow name="NonStaticFlow" doc:id="b37bb960-869e-4067-a623-d37f2c0acc78" >
 		<http:listener doc:name="getPrice" doc:id="2cf4ebee-5e0d-4a8a-90c8-ddff23ccd553" config-ref="HTTP_Listener_config" path="/getPrice"/>
-		<java:new doc:name="New" doc:id="5da0b23f-3bce-49e5-83c5-ceeb7302d403" class="com.way2learnonline.StockQuoteService" constructor="StockQuoteService()" target="sqs"/>
+		<java:new doc:name="New" doc:id="5da0b23f-3bce-49e5-83c5-ceeb7302d403" class="com.way2learnonline.StockQuoteService" constructor="StockQuoteService()" target="sqs" doc:description="check the Advanced tab for the instance variable declaration"/>
 		<java:invoke method="getStockPrice(java.lang.String)" doc:name="Invoke" doc:id="5541a168-82df-40f4-897b-83a946656ae4" instance="#[vars.sqs]" class="com.way2learnonline.StockQuoteService">
 			<java:args ><![CDATA[#[{
 	stockSymbol : attributes.queryParams.stock as String
